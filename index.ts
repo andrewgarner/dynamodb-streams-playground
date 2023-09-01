@@ -1,1 +1,1 @@
-export const myProject = "My project";
+export const dynamoDBStream = "DynamoDB Stream";

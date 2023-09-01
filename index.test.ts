@@ -1,8 +1,8 @@
 import { describe, expect, it } from "@jest/globals";
-import { myProject } from "./index";
+import { dynamoDBStream } from "./index";
 
-describe("my project", () => {
+describe("dynamoDB Streams", () => {
   it("works", () => {
-    expect(myProject).toBe("My project");
+    expect(dynamoDBStream).toBe("DynamoDB Stream");
   });
 });

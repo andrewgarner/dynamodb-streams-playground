@@ -1,7 +1,7 @@
 {
-  "name": "my-project",
+  "name": "dynamodb-streams-playground",
   "private": true,
-  "description": "My project.",
+  "description": "DynamoDB stream playground.",
   "type": "module",
   "scripts": {
     "prepare": "husky install",
