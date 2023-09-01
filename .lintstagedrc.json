@@ -1,0 +1,4 @@
+{
+  "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}": ["npx eslint --cache --fix", "npx jest --findRelatedTests", "npx tsc --noEmit"],
+  "**/*": "npx prettier --write --ignore-unknown"
+}
