@@ -1,6 +1,3 @@
 {
-  "extends": ["@tsconfig/strictest/tsconfig.json", "@tsconfig/node18/tsconfig.json", "@tsconfig/esm/tsconfig.json"],
-  "compilerOptions": {
-    "verbatimModuleSyntax": false
-  }
+  "extends": ["@tsconfig/strictest/tsconfig.json", "@tsconfig/node18/tsconfig.json"]
 }

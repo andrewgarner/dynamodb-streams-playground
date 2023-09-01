@@ -27,5 +27,11 @@
         "onlyFunctionsWithExpectInCallback": true
       }
     ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": true,
+      "typescript": true
+    }
   }
 }
