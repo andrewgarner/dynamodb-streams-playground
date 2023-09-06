@@ -5,6 +5,7 @@ import { NativeAttributeValue, unmarshall } from "@aws-sdk/util-dynamodb";
 
 const items: unknown[] = [];
 const logger: Logger = new Logger({ serviceName: "dynamodb-streams-playground" });
+const unsupportedRegex = /unsupported/i;
 
 const dynamoDBStreamHandler: DynamoDBStreamHandler = async (event) => {
   const batchItemFailures: DynamoDBBatchItemFailure[] = [];
@@ -26,6 +27,7 @@ const dynamoDBRecordHandler = async (record: DynamoDBRecord) => {
   if (record.dynamodb && record.dynamodb.NewImage) {
     logger.info("Processing record", { record: record.dynamodb });
     const item = unmarshall(record.dynamodb.NewImage as { [key: string]: NativeAttributeValue });
+    if (unsupportedRegex.test(item["Message"])) throw new Error("Unsupported item");
     logger.info("Processed item", { item });
     items.push(item);
   }
