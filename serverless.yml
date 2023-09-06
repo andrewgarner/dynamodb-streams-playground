@@ -1,0 +1,48 @@
+service: dynamodb-streams-playground
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  region: eu-west-1
+  runtime: nodejs18.x
+  tags:
+    Service: DynamoDB Streams Playground
+    Owner: ${param:owner}
+    Environment: ${sls:stage}
+  stackTags: ${self:provider.tags}
+  deploymentMethod: direct
+
+functions:
+  dynamoDBStreamHandler:
+    handler: index.handler
+    description: |
+      Handles DynamoDB stream events.
+    events:
+      - stream:
+          type: dynamodb
+          arn: !GetAtt table.StreamArn
+          batchSize: 1
+          startingPosition: LATEST
+          functionResponseType: ReportBatchItemFailures
+
+resources:
+  Resources:
+    table:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: PK
+            AttributeType: S
+          - AttributeName: SK
+            AttributeType: S
+        BillingMode: PAY_PER_REQUEST
+        KeySchema:
+          - AttributeName: PK
+            KeyType: HASH
+          - AttributeName: SK
+            KeyType: RANGE
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
+
+plugins:
+  - serverless-esbuild
