@@ -136,6 +136,33 @@ describe("handler", () => {
           },
           eventSourceARN: "arn:aws:dynamodb:eu-west-1:123456789012:table/playground/stream/2015-06-27T00:48:05.899",
         },
+        {
+          eventID: "eccbc87e4b5ce2fe28308fd9f2a7baf3",
+          eventName: "REMOVE",
+          eventVersion: "1.1",
+          eventSource: "aws:dynamodb",
+          awsRegion: "eu-west-1",
+          dynamodb: {
+            Keys: {
+              Id: {
+                N: "101",
+              },
+            },
+            OldImage: {
+              Message: {
+                S: "This item has changed",
+              },
+              Id: {
+                N: "101",
+              },
+            },
+            ApproximateCreationDateTime: 1428537600,
+            SequenceNumber: "4421584500000000017450439093",
+            SizeBytes: 38,
+            StreamViewType: "NEW_AND_OLD_IMAGES",
+          },
+          eventSourceARN: "arn:aws:dynamodb:eu-west-1:123456789012:table/playground/stream/2015-06-27T00:48:05.899",
+        },
       ],
     };
 

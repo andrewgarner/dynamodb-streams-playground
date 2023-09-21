@@ -36,6 +36,7 @@
     "tsconfig-paths": "^4.0.0"
   },
   "dependencies": {
+    "@aws-lambda-powertools/batch": "^1.13.0",
     "@aws-lambda-powertools/logger": "^1.12.1",
     "@aws-sdk/util-dynamodb": "^3.398.0",
     "@middy/core": "^3.6.2"
